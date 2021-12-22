@@ -4,5 +4,6 @@ public class Main {
 
     public static void main(String[] args) {
 	    FileHandler.ReadDataFromFile("slang.txt");
+        Dictionary.viewDict();
     }
 }

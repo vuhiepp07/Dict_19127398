@@ -56,25 +56,27 @@ public class Dictionary {
         return -1;
     }
 
+    public static int Check_DefinitionExist(String Value){
+        if(Dict.containsValue(Value) == true) return 1;
+        return -1;
+    }
+
     public static ArrayList<String> findByWord(String Key){
         searchHis_Handle(Key);
         ArrayList<String> Val = new ArrayList<String>();
-        if(Check_SlangExist(Key) == 1){
-            Val = Dict.get(Key);
-        }
+        Val = Dict.get(Key);
         return Val;
     }
+
     public static ArrayList<String> findByDefinition(String Value){
         ArrayList<String> Result = new ArrayList<String>();
-        if(Dict.containsValue(Value)){
-            Iterator<HashMap.Entry<String, ArrayList<String>>> iterator = Dict.entrySet().iterator();
-            while (iterator.hasNext()) {
-                HashMap.Entry me = (HashMap.Entry)iterator.next();
-                String Key = (String) me.getKey();
-                ArrayList<String> Val = (ArrayList<String>) me.getValue();
-                for(int i = 0; i < Val.size(); i++){
-                    if(Val.get(i) == Value) Result.add(Val.get(i));
-                }
+        Iterator<HashMap.Entry<String, ArrayList<String>>> iterator = Dict.entrySet().iterator();
+        while (iterator.hasNext()) {
+            HashMap.Entry me = (HashMap.Entry) iterator.next();
+            String Key = (String) me.getKey();
+            ArrayList<String> Val = (ArrayList<String>) me.getValue();
+            for (int i = 0; i < Val.size(); i++) {
+                if (Val.get(i) == Value) Result.add(Val.get(i));
             }
         }
         return Result;

@@ -39,7 +39,13 @@ public class EventHandler implements ActionListener {
             }
         }
         else if(e.getActionCommand() == "ViewSearchHistory"){
-
+            SearchHistoryFrame.CreateAndShowSearchHistoryFrame();
+            MenuFrame.closeFrame();
+        }
+        else if(e.getActionCommand() == "ClearHistory"){
+            Dictionary.Delete_SearchHistory();
+            SearchHistoryFrame.closeFrame();
+            SearchHistoryFrame.CreateAndShowSearchHistoryFrame();
         }
         else if(e.getActionCommand() == "AddNewSlang"){
 
@@ -64,10 +70,15 @@ public class EventHandler implements ActionListener {
         }
         else if(e.getActionCommand() == "ExitMenuFrame"){
             MenuFrame.closeFrame();
+            FileHandler.WriteDown_SearchHisFile(Dictionary.get_SearchHistory(),"searchHistory.txt");
             System.exit(0);
         }
         else if(e.getActionCommand() == "ResultBackToMenuFrame"){
             FindingResultFrame.closeFrame();
+            MenuFrame.CreateAndShowMenuFrame();
+        }
+        else if(e.getActionCommand() == "HistoryBackToMenuFrame"){
+            SearchHistoryFrame.closeFrame();
             MenuFrame.CreateAndShowMenuFrame();
         }
     }

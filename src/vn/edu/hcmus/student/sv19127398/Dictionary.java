@@ -16,6 +16,14 @@ public class Dictionary {
         return Dict;
     }
 
+    public static ArrayList<String> get_SearchHistory(){
+        return Searching_History;
+    }
+
+    public static void Delete_SearchHistory(){
+        Searching_History.clear();
+    }
+
     public static void searchHis_Handle(String Key){
         if(Searching_History.size() == 20) Searching_History.remove(0); // Giới hạn lịch sử tìm kiếm chỉ lưu 20 từ
         Searching_History.add(Key);

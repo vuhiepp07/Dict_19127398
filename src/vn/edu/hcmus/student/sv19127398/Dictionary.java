@@ -124,6 +124,7 @@ public class Dictionary {
         ArrayList<String> Keys = new ArrayList<String>(Dict.keySet());
         int randIndex = new Random().nextInt(Keys.size());
         String key = Keys.get(randIndex);
+        result.add(key);
         ArrayList<String> value = Dict.get(key);
         for(int i = 0; i < value.size(); i++){
             result.add(value.get(i));

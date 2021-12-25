@@ -17,7 +17,7 @@ public class Dictionary {
     }
 
     public static void searchHis_Handle(String Key){
-        if(Searching_History.size() == 10) Searching_History.remove(0); // Giới hạn lịch sử tìm kiếm chỉ lưu 10 từ
+        if(Searching_History.size() == 20) Searching_History.remove(0); // Giới hạn lịch sử tìm kiếm chỉ lưu 20 từ
         Searching_History.add(Key);
         FileHandler.WriteDown_SearchHisFile(Searching_History, "searchHistory.txt");
     }
@@ -57,7 +57,19 @@ public class Dictionary {
     }
 
     public static int Check_DefinitionExist(String Value){
-        if(Dict.containsValue(Value) == true) return 1;
+        //if(Dict.containsValue(Value) == true) return 1;
+        Iterator<HashMap.Entry<String, ArrayList<String>>> iterator = Dict.entrySet().iterator();
+        while (iterator.hasNext()) {
+            HashMap.Entry me = (HashMap.Entry) iterator.next();
+            ArrayList<String> Val = (ArrayList<String>) me.getValue();
+            for(int i = 0; i < Val.size(); i++){
+                String temp = Val.get(i);
+                temp = temp.substring(1, temp.length());
+                if(Val.get(i).equals(Value) || temp.equals(Value)) {
+                    return 1;
+                }
+            }
+        }
         return -1;
     }
 
@@ -76,7 +88,11 @@ public class Dictionary {
             String Key = (String) me.getKey();
             ArrayList<String> Val = (ArrayList<String>) me.getValue();
             for (int i = 0; i < Val.size(); i++) {
-                if (Val.get(i) == Value) Result.add(Val.get(i));
+                String temp = Val.get(i);
+                temp = temp.substring(1, temp.length());
+                if(Val.get(i).equals(Value) || temp.equals(Value)) {
+                    Result.add(Key);
+                }
             }
         }
         return Result;

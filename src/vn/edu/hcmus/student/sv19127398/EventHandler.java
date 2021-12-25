@@ -29,7 +29,7 @@ public class EventHandler implements ActionListener {
                 }
             } else if (e.getActionCommand() == "SearchByDefinition") {
                 SearchKey = JOptionPane.showInputDialog(temp, "Enter Definition of a Slang word:");
-                if (ReverseDictionary.Check_SlangExist(SearchKey) == -1) {
+                if (Dictionary.Check_DefinitionExist(SearchKey) == -1) {
                     JOptionPane.showMessageDialog(temp, "Definition you find doesn't exist");
                 }
                 else{

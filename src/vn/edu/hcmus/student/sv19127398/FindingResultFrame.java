@@ -36,7 +36,7 @@ public class FindingResultFrame extends JFrame{
             Result.add(0, "Definition: ");
         }
         else if(FindType == 2){ // Nếu là tìm kiếm Slang word bằng Definition
-            Result = ReverseDictionary.findByWord(SearchKey);
+            Result = Dictionary.findByDefinition(SearchKey);
             FrameLabel = new JLabel("Definition: " + key);
             Result.add(0, "Slang word: ");
         }

@@ -66,7 +66,7 @@ public class MenuFrame extends JFrame{
         headerPanel.add(Box.createRigidArea(new Dimension(0,20)));
 
         JPanel menuOptions = new JPanel();
-        menuOptions.setLayout(new BoxLayout(menuOptions,BoxLayout.Y_AXIS));
+        menuOptions.setLayout(new GridLayout(0,1));
         addComponentsToMenuPanel(menuOptions, SearchByWord_btn);
         addComponentsToMenuPanel(menuOptions, SearchByDef_btn);
         addComponentsToMenuPanel(menuOptions, ViewSearchHistory_btn);
@@ -88,8 +88,7 @@ public class MenuFrame extends JFrame{
     }
 
     public void addComponentsToMenuPanel(JPanel menuOptions, JButton btn){
-        menuOptions.add(btn, Component.CENTER_ALIGNMENT);
-        menuOptions.add(Box.createRigidArea(new Dimension(0,10)));
+        menuOptions.add(btn);
     }
 
     public static void CreateAndShowMenuFrame(){

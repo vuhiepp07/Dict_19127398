@@ -40,10 +40,9 @@ public class QuizFrame1 extends JFrame {
         headerPanel.add(Box.createRigidArea(new Dimension(0,20)));
 
         JPanel QuizOptions = new JPanel();
-        QuizOptions.setLayout(new BorderLayout());
-        QuizOptions.add(QuizBySlang_btn, BorderLayout.PAGE_START);
-//        QuizOptions.add(Box.createRigidArea(new Dimension(0, 20)), BorderLayout.CENTER);
-        QuizOptions.add(QuizByDef_btn, BorderLayout.CENTER);
+        QuizOptions.setLayout(new GridLayout(0,1));
+        QuizOptions.add(QuizBySlang_btn);
+        QuizOptions.add(QuizByDef_btn);
 
         JPanel footerPanel = new JPanel();
         footerPanel.setLayout(new FlowLayout());

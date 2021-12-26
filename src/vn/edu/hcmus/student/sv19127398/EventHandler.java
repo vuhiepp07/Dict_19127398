@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * vn.edu.hcmus.student.sv19127398
@@ -97,6 +98,36 @@ public class EventHandler implements ActionListener {
             QuizFrame1.CreateAndShowQuizFrame1();
             MenuFrame.closeFrame();
         }
+        else if(e.getActionCommand() == "QuizBySlang"){
+            int ConfirmResult = JOptionPane.showConfirmDialog(null, "Program will give you a Slang word and 4 Definition, " +
+                    "your mission is to select the appropriate Definition that fit with the given Slang word, if you select the correct answer you win. " +
+                    "Are you ready?", "Quiz By Slang Rules", JOptionPane.YES_NO_OPTION);
+            if(ConfirmResult == JOptionPane.YES_OPTION) {
+                ArrayList<String> quiz  = Dictionary.quiz_Slang();
+                String Slang = quiz.get(0);
+                String Def = quiz.get(1);
+                ArrayList<String> WrongAnswer = new ArrayList<String>();
+                for(int i = 1; i <quiz.size(); i++){
+                    WrongAnswer.add(quiz.get(i));
+                }
+                int ResultPos = new Random().nextInt(4);
+            }
+        }
+        else if(e.getActionCommand() == "QuizByDefinition"){
+            int ConfirmResult = JOptionPane.showConfirmDialog(null, "Program will give you a Definition and 4 Slang words, " +
+                    "your mission is to select the appropriate Slang word that fit with the given Definition, if you select the correct answer you win. " +
+                    "Are you ready?", "Quiz By Slang Rules", JOptionPane.YES_NO_OPTION);
+            if(ConfirmResult == JOptionPane.YES_OPTION) {
+                ArrayList<String> quiz = Dictionary.quiz_Definition();
+                String Slang = quiz.get(0);
+                String Def = quiz.get(1);
+                ArrayList<String> WrongAnswer = new ArrayList<String>();
+                for(int i = 1; i <quiz.size(); i++){
+                    WrongAnswer.add(quiz.get(i));
+                }
+                int ResultPos = new Random().nextInt(4);
+            }
+        }
         else if(e.getActionCommand() == "AboutStudent"){
         }
         else if(e.getActionCommand() == "ExitMenuFrame"){
@@ -111,6 +142,10 @@ public class EventHandler implements ActionListener {
         }
         else if(e.getActionCommand() == "HistoryBackToMenuFrame"){
             SearchHistoryFrame.closeFrame();
+            MenuFrame.CreateAndShowMenuFrame();
+        }
+        else if(e.getActionCommand() == "Quiz1BackToMenuFrame"){
+            QuizFrame1.closeFrame();
             MenuFrame.CreateAndShowMenuFrame();
         }
     }

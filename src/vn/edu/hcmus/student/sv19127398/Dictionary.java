@@ -11,6 +11,7 @@ import java.util.*;
 public class Dictionary {
     static HashMap<String, ArrayList<String>> Dict = new HashMap<>();
     static ArrayList<String> Searching_History = new ArrayList<>();
+    static int ResultQuizGame = -1;
 
     public static HashMap<String, ArrayList<String>> getDictionaryData(){
         return Dict;
@@ -158,8 +159,8 @@ public class Dictionary {
         int randIndexKey = new Random().nextInt(Keys.size());
         String key = Keys.get(randIndexKey);
         ArrayList<String> value = Dict.get(key);
-        result.add(value.get(0));
         result.add(key);
+        result.add(value.get(0));
         int cnt = 0;
         while(cnt<3){
             int random_def = new Random().nextInt(Keys.size());
@@ -170,5 +171,13 @@ public class Dictionary {
             }
         }
         return result;
+    }
+
+    public static void SetResultQuizGame(int result){
+        ResultQuizGame = result;
+    }
+
+    public static int GetResultQuizGame(){
+        return ResultQuizGame;
     }
 }

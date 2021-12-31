@@ -1,7 +1,6 @@
 package vn.edu.hcmus.student.sv19127398;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -107,10 +106,11 @@ public class EventHandler implements ActionListener {
                 String Slang = quiz.get(0);
                 String Def = quiz.get(1);
                 ArrayList<String> WrongAnswer = new ArrayList<String>();
-                for(int i = 1; i <quiz.size(); i++){
+                for(int i = 2; i <quiz.size(); i++){
                     WrongAnswer.add(quiz.get(i));
                 }
-                int ResultPos = new Random().nextInt(4);
+                QuizFrame2.CreateAndShowMenuFrame(Slang, Def, WrongAnswer, 2);
+                QuizFrame1.closeFrame();
             }
         }
         else if(e.getActionCommand() == "QuizByDefinition"){
@@ -122,11 +122,60 @@ public class EventHandler implements ActionListener {
                 String Slang = quiz.get(0);
                 String Def = quiz.get(1);
                 ArrayList<String> WrongAnswer = new ArrayList<String>();
-                for(int i = 1; i <quiz.size(); i++){
+                for(int i = 2; i <quiz.size(); i++){
                     WrongAnswer.add(quiz.get(i));
                 }
-                int ResultPos = new Random().nextInt(4);
+                QuizFrame2.CreateAndShowMenuFrame(Slang, Def, WrongAnswer, 2);
+                QuizFrame1.closeFrame();
             }
+        }
+        else if(e.getActionCommand().equals("0")){
+            if(QuizFrame2.getTrueAnswer().equals("0")){
+                JOptionPane.showMessageDialog(null, "Congratulation! You had chosen the right answer",
+                        "Correct", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "You had chosen the wrong answer, good luck next time.",
+                        "Incorrect", JOptionPane.INFORMATION_MESSAGE);
+            }
+            QuizFrame2.closeFrame();
+            MenuFrame.CreateAndShowMenuFrame();
+        }
+        else if(e.getActionCommand().equals("1")){
+            if(QuizFrame2.getTrueAnswer().equals("1")){
+                JOptionPane.showMessageDialog(null, "Congratulation! You had chosen the right answer",
+                        "Correct", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "You had chosen the wrong answer, good luck next time.",
+                        "Incorrect", JOptionPane.INFORMATION_MESSAGE);
+            }
+            QuizFrame2.closeFrame();
+            MenuFrame.CreateAndShowMenuFrame();
+        }
+        else if(e.getActionCommand().equals("2")){
+            if(QuizFrame2.getTrueAnswer().equals("2")){
+                JOptionPane.showMessageDialog(null, "Congratulation! You had chosen the right answer",
+                        "Correct", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "You had chosen the wrong answer, good luck next time.",
+                        "Incorrect", JOptionPane.INFORMATION_MESSAGE);
+            }
+            QuizFrame2.closeFrame();
+            MenuFrame.CreateAndShowMenuFrame();
+        }
+        else if(e.getActionCommand().equals("3")){
+            if(QuizFrame2.getTrueAnswer().equals("3")){
+                JOptionPane.showMessageDialog(null, "Congratulation! You had chosen the right answer",
+                        "Correct", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "You had chosen the wrong answer, good luck next time.",
+                        "Incorrect", JOptionPane.INFORMATION_MESSAGE);
+            }
+            QuizFrame2.closeFrame();
+            MenuFrame.CreateAndShowMenuFrame();
         }
         else if(e.getActionCommand() == "AboutStudent"){
         }
@@ -146,6 +195,10 @@ public class EventHandler implements ActionListener {
         }
         else if(e.getActionCommand() == "Quiz1BackToMenuFrame"){
             QuizFrame1.closeFrame();
+            MenuFrame.CreateAndShowMenuFrame();
+        }
+        else if(e.getActionCommand() == "Quiz2BackToMenuFrame"){
+            QuizFrame2.closeFrame();
             MenuFrame.CreateAndShowMenuFrame();
         }
     }

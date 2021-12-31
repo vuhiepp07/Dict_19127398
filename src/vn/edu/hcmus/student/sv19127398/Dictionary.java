@@ -156,7 +156,7 @@ public class Dictionary {
     public static ArrayList<String> quiz_Definition(){ //Đố vui, đưa ra một definition và 4 slang word để người dùng chọn
         ArrayList<String> result = new ArrayList<>();
         ArrayList<String> Keys = new ArrayList<String>(Dict.keySet());
-        int randIndexKey = new Random().nextInt(Keys.size());
+        int randIndexKey = new Random().nextInt(Dict.keySet().size());
         String key = Keys.get(randIndexKey);
         ArrayList<String> value = Dict.get(key);
         result.add(key);

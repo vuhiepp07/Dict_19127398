@@ -70,6 +70,7 @@ public class MenuFrame extends JFrame{
         addComponentsToMenuPanel(menuOptions, SearchByWord_btn);
         addComponentsToMenuPanel(menuOptions, SearchByDef_btn);
         addComponentsToMenuPanel(menuOptions, ViewSearchHistory_btn);
+        addComponentsToMenuPanel(menuOptions, AddNewSlang_btn);
         addComponentsToMenuPanel(menuOptions, EditSlang_btn);
         addComponentsToMenuPanel(menuOptions, DeleteSlang_btn);
         addComponentsToMenuPanel(menuOptions, ResetDict_btn);

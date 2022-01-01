@@ -56,21 +56,30 @@ public class EventHandler implements ActionListener {
             Slang = JOptionPane.showInputDialog(null, "Enter Slang word you want to add:",
                     "Add new Slang", JOptionPane.QUESTION_MESSAGE);
             if(Dictionary.Check_SlangExist(Slang) == 1){
-
+                int choice;
+                UIManager.put("OptionPane.yesButtonText", "Overwrite(delete the old definitions and enter new ones)"); // https://stackoverflow.com/questions/14407804/how-to-change-the-default-text-of-buttons-in-joptionpane-showinputdialog
+                UIManager.put("OptionPane.noButtonText", "Duplicate(keep the old definitions and append new ones after them)");
+                choice = JOptionPane.showConfirmDialog(null, "Choose adding type",
+                        "Add new Slang", JOptionPane.OK_OPTION);
+                UIManager.put("OptionPane.yesButtonText", "Yes");
+                UIManager.put("OptionPane.noButtonText", "No");
+                if(choice == JOptionPane.YES_OPTION){
+                    Dictionary.Delete(Slang);
+                }
             }
-            else{
                 String numOfDef;
-                numOfDef = JOptionPane.showInputDialog(null, "How many definition of this slang you want to input:",
+                numOfDef = JOptionPane.showInputDialog(null, "How many definition of this slang you want to add?",
                         "Add new Slang", JOptionPane.QUESTION_MESSAGE);
                 int n = Integer.valueOf(numOfDef);
                 ArrayList<String> Val = new ArrayList<String>();
-                for(int i = 0; i < n; i++){
-                    String temp = JOptionPane.showInputDialog(null, "Enter definition " + i + 1,
+                for(int i = 0; i < n; i++) {
+                    String temp = JOptionPane.showInputDialog(null, "Enter definition " + (i + 1),
                             "Enter definition", JOptionPane.QUESTION_MESSAGE);
                     Val.add(temp);
                 }
                 Dictionary.add(Slang, Val);
-            }
+            JOptionPane.showMessageDialog(null, "Add new Slang success!",
+                    "Add a new Slang", JOptionPane.INFORMATION_MESSAGE);
         }
         else if(e.getActionCommand() == "EditSlang"){
             String Slang;
@@ -78,25 +87,43 @@ public class EventHandler implements ActionListener {
                     "Edit Slang", JOptionPane.QUESTION_MESSAGE);
             if(Dictionary.Check_SlangExist(Slang) == 1){
                 int choice;
-                UIManager.put("OptionPane.yesButtonText", "Keep the old definition and add new ones"); // https://stackoverflow.com/questions/14407804/how-to-change-the-default-text-of-buttons-in-joptionpane-showinputdialog
-                UIManager.put("OptionPane.noButtonText", "Delete the old definition and add new ones");
-                choice = JOptionPane.showConfirmDialog(null, "Choose edit type",
+                UIManager.put("OptionPane.yesButtonText", "Slang"); // https://stackoverflow.com/questions/14407804/how-to-change-the-default-text-of-buttons-in-joptionpane-showinputdialog
+                UIManager.put("OptionPane.noButtonText", "Definition");
+                choice = JOptionPane.showConfirmDialog(null, "Which one you want to edit?",
                         "Edit Slang", JOptionPane.OK_OPTION);
                 UIManager.put("OptionPane.yesButtonText", "Yes");
                 UIManager.put("OptionPane.noButtonText", "No");
-                if(choice == JOptionPane.NO_OPTION){
+                if(choice == JOptionPane.YES_OPTION) {
+                    ArrayList<String> Val = new ArrayList<String>();
+                    Val = (ArrayList<String>) Dictionary.getValueFromKey(Slang).clone();
                     Dictionary.Delete(Slang);
+                    Slang = JOptionPane.showInputDialog(null, "Enter new Slang:",
+                            "Edit Slang", JOptionPane.INFORMATION_MESSAGE);
+                    Dictionary.add(Slang, Val);
                 }
-                String numOfDef = JOptionPane.showInputDialog(null, "How many definition of this slang you want to append:",
-                        "Add new Slang", JOptionPane.QUESTION_MESSAGE);
-                int n = Integer.valueOf(numOfDef);
-                ArrayList<String> Val = new ArrayList<String>();
-                for(int i = 0; i < n; i++){
-                    String temp = JOptionPane.showInputDialog(null, "Enter definition " + i + 1,
-                            "Enter definition", JOptionPane.QUESTION_MESSAGE);
-                    Val.add(temp);
+                else {
+                    UIManager.put("OptionPane.yesButtonText", "Keep the old definition and add new ones");
+                    UIManager.put("OptionPane.noButtonText", "Delete the old definition and add new ones");
+                    choice = JOptionPane.showConfirmDialog(null, "Choose edit type",
+                            "Edit Slang", JOptionPane.OK_OPTION);
+                    UIManager.put("OptionPane.yesButtonText", "Yes");
+                    UIManager.put("OptionPane.noButtonText", "No");
+                    if (choice == JOptionPane.NO_OPTION) {
+                        Dictionary.Delete(Slang);
+                    }
+                    String numOfDef = JOptionPane.showInputDialog(null, "How many definition of this slang you want to append:",
+                            "Add new Slang", JOptionPane.QUESTION_MESSAGE);
+                    int n = Integer.valueOf(numOfDef);
+                    ArrayList<String> Val = new ArrayList<String>();
+                    for (int i = 0; i < n; i++) {
+                        String temp = JOptionPane.showInputDialog(null, "Enter definition " + (i + 1),
+                                "Enter definition", JOptionPane.QUESTION_MESSAGE);
+                        Val.add(temp);
+                    }
+                    Dictionary.add(Slang, Val);
                 }
-                Dictionary.add(Slang, Val);
+                JOptionPane.showMessageDialog(null, "Edit Slang success!",
+                        "Edit a Slang", JOptionPane.INFORMATION_MESSAGE);
             }
             else{
                 JOptionPane.showMessageDialog(null, "Slang word you want to edit doesn't exist",

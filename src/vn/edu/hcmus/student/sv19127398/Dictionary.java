@@ -82,6 +82,12 @@ public class Dictionary {
         return -1;
     }
 
+    public static ArrayList<String> getValueFromKey(String Key){
+        ArrayList<String> Val = new ArrayList<String>();
+        Val = Dict.get(Key);
+        return Val;
+    }
+
     public static ArrayList<String> findByWord(String Key){
         searchHis_Handle(Key);
         ArrayList<String> Val = new ArrayList<String>();
@@ -171,13 +177,5 @@ public class Dictionary {
             }
         }
         return result;
-    }
-
-    public static void SetResultQuizGame(int result){
-        ResultQuizGame = result;
-    }
-
-    public static int GetResultQuizGame(){
-        return ResultQuizGame;
     }
 }

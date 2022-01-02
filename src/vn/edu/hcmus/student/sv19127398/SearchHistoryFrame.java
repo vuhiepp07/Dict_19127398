@@ -19,6 +19,9 @@ public class SearchHistoryFrame extends JFrame {
     JScrollPane scrollPane;
     static JFrame ThisFrame;
 
+    /**
+     * Default constructor, initialize labels, buttons, scrollPane, set action command and add action listener to the buttons
+     */
     public SearchHistoryFrame(){
         FrameLabel = new JLabel("HISTORY");
         Ok_btn = new JButton("OK");
@@ -39,6 +42,10 @@ public class SearchHistoryFrame extends JFrame {
         addComponentsToFrame(getContentPane());
     }
 
+    /**
+     * Add buttons, labels to panel and the add panels to the frame
+     * @param container Container
+     */
     public void addComponentsToFrame(Container container){
         container.setLayout(new BorderLayout());
 
@@ -58,6 +65,9 @@ public class SearchHistoryFrame extends JFrame {
         container.add(footerPanel, BorderLayout.PAGE_END);
     }
 
+    /**
+     * Create and set visible to the Searching History Frame
+     */
     public static void CreateAndShowSearchHistoryFrame(){
         JFrame.setDefaultLookAndFeelDecorated(true);
         ThisFrame = new SearchHistoryFrame();
@@ -66,6 +76,9 @@ public class SearchHistoryFrame extends JFrame {
         ThisFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Exit and close the frame
+     */
     public static void closeFrame(){
         ThisFrame.dispose();
     }

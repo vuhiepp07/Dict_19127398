@@ -14,8 +14,13 @@ import java.util.Random;
  */
 public class EventHandler implements ActionListener {
 
+    /**
+     * Handle the events of the whole program
+     * @param e ActionEvent
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
+        //If the user click on Search by word or search by definition buttons on the menu frame
         if(e.getActionCommand() == "SearchByWord" || e.getActionCommand() == "SearchByDefinition") {
             String SearchKey;
             if (e.getActionCommand() == "SearchByWord") {
@@ -42,15 +47,18 @@ public class EventHandler implements ActionListener {
                 }
             }
         }
+        //View the searching history
         else if(e.getActionCommand() == "ViewSearchHistory"){
             SearchHistoryFrame.CreateAndShowSearchHistoryFrame();
             MenuFrame.closeFrame();
         }
+        //Clear the searching history
         else if(e.getActionCommand() == "ClearHistory"){
             Dictionary.Delete_SearchHistory();
             SearchHistoryFrame.closeFrame();
             SearchHistoryFrame.CreateAndShowSearchHistoryFrame();
         }
+        //Add a new Slang word and its definitions to the dictionary
         else if(e.getActionCommand() == "AddNewSlang"){
             String Slang;
             Slang = JOptionPane.showInputDialog(null, "Enter Slang word you want to add:",
@@ -81,6 +89,7 @@ public class EventHandler implements ActionListener {
             JOptionPane.showMessageDialog(null, "Add new Slang success!",
                     "Add a new Slang", JOptionPane.INFORMATION_MESSAGE);
         }
+        //Edit a Slang word and its definitions
         else if(e.getActionCommand() == "EditSlang"){
             String Slang;
             Slang = JOptionPane.showInputDialog(null, "Enter Slang word you want to edit:",
@@ -130,6 +139,7 @@ public class EventHandler implements ActionListener {
                         "Edit Slang", JOptionPane.INFORMATION_MESSAGE);
             }
         }
+        //Delete a Slang word
         else if(e.getActionCommand() == "DeleteSlang"){
             String Slang;
             Slang = JOptionPane.showInputDialog(null, "Enter Slang word you want to delete:",
@@ -148,12 +158,14 @@ public class EventHandler implements ActionListener {
                 }
             }
         }
+        //Reset the dictionary
         else if(e.getActionCommand() == "ResetDictionary"){
             FileHandler.ReadDataFromFile("slang.txt");
             JOptionPane.showMessageDialog(null, "Dictionary has been reseted to default, " +
                     "all edited and deleted slang words have been recovered and Slang words which had been add by user have been deleted",
                     "Reset Dictionary", JOptionPane.INFORMATION_MESSAGE);
         }
+        //View Random Slang and its definitions
         else if(e.getActionCommand() == "RandomSlang"){
             ArrayList<String> RandomResult = Dictionary.Random();
             StringBuilder DefinitionList = new StringBuilder();
@@ -166,10 +178,12 @@ public class EventHandler implements ActionListener {
             JOptionPane.showMessageDialog(null, RandomResult.get(0) + ": "
                     + DefinitionList.toString(), "Random Slang", JOptionPane.INFORMATION_MESSAGE);
         }
+        //Playing quiz game
         else if(e.getActionCommand() == "PlayQuiz"){
             QuizFrame1.CreateAndShowQuizFrame1();
             MenuFrame.closeFrame();
         }
+        //Quiz by slang mode in quiz game
         else if(e.getActionCommand() == "QuizBySlang"){
             int ConfirmResult = JOptionPane.showConfirmDialog(null, "Program will give you a Slang word and 4 Definition, " +
                     "your mission is to select the appropriate Definition that fit with the given Slang word, if you select the correct answer you win. " +
@@ -182,10 +196,11 @@ public class EventHandler implements ActionListener {
                 for(int i = 2; i <quiz.size(); i++){
                     WrongAnswer.add(quiz.get(i));
                 }
-                QuizFrame2.CreateAndShowMenuFrame(Slang, Def, WrongAnswer, 2);
+                QuizFrame2.CreateAndShowQuizFrame2(Slang, Def, WrongAnswer, 2);
                 QuizFrame1.closeFrame();
             }
         }
+        //Quiz by definition mode in quiz game
         else if(e.getActionCommand() == "QuizByDefinition"){
             int ConfirmResult = JOptionPane.showConfirmDialog(null, "Program will give you a Definition and 4 Slang words, " +
                     "your mission is to select the appropriate Slang word that fit with the given Definition, if you select the correct answer you win. " +
@@ -198,10 +213,11 @@ public class EventHandler implements ActionListener {
                 for(int i = 2; i <quiz.size(); i++){
                     WrongAnswer.add(quiz.get(i));
                 }
-                QuizFrame2.CreateAndShowMenuFrame(Slang, Def, WrongAnswer, 2);
+                QuizFrame2.CreateAndShowQuizFrame2(Slang, Def, WrongAnswer, 2);
                 QuizFrame1.closeFrame();
             }
         }
+        //When user click on answer 0 in quiz game
         else if(e.getActionCommand().equals("0")){
             if(QuizFrame2.getTrueAnswer().equals("0")){
                 JOptionPane.showMessageDialog(null, "Congratulation! You had chosen the right answer",
@@ -214,6 +230,7 @@ public class EventHandler implements ActionListener {
             QuizFrame2.closeFrame();
             MenuFrame.CreateAndShowMenuFrame();
         }
+        //When user click on answer 1 in quiz game
         else if(e.getActionCommand().equals("1")){
             if(QuizFrame2.getTrueAnswer().equals("1")){
                 JOptionPane.showMessageDialog(null, "Congratulation! You had chosen the right answer",
@@ -226,6 +243,7 @@ public class EventHandler implements ActionListener {
             QuizFrame2.closeFrame();
             MenuFrame.CreateAndShowMenuFrame();
         }
+        //When user click on answer 2 in quiz game
         else if(e.getActionCommand().equals("2")){
             if(QuizFrame2.getTrueAnswer().equals("2")){
                 JOptionPane.showMessageDialog(null, "Congratulation! You had chosen the right answer",
@@ -238,6 +256,7 @@ public class EventHandler implements ActionListener {
             QuizFrame2.closeFrame();
             MenuFrame.CreateAndShowMenuFrame();
         }
+        //When user click on answer 3 in quiz game
         else if(e.getActionCommand().equals("3")){
             if(QuizFrame2.getTrueAnswer().equals("3")){
                 JOptionPane.showMessageDialog(null, "Congratulation! You had chosen the right answer",
@@ -250,26 +269,32 @@ public class EventHandler implements ActionListener {
             QuizFrame2.closeFrame();
             MenuFrame.CreateAndShowMenuFrame();
         }
+        //Show the student information
         else if(e.getActionCommand() == "AboutStudent"){
         }
+        //Exit the program
         else if(e.getActionCommand() == "ExitMenuFrame"){
             MenuFrame.closeFrame();
             FileHandler.WriteDown_SearchHisFile(Dictionary.get_SearchHistory(),"searchHistory.txt");
             FileHandler.WriteDictDataTo_EditedEdition_File("slangUserEditedEdition.txt");
             System.exit(0);
         }
+        //From result frame move back to menu frame
         else if(e.getActionCommand() == "ResultBackToMenuFrame"){
             FindingResultFrame.closeFrame();
             MenuFrame.CreateAndShowMenuFrame();
         }
+        //From view history frame move back to menu frame
         else if(e.getActionCommand() == "HistoryBackToMenuFrame"){
             SearchHistoryFrame.closeFrame();
             MenuFrame.CreateAndShowMenuFrame();
         }
+        //From Quiz1 frame move back to menu frame
         else if(e.getActionCommand() == "Quiz1BackToMenuFrame"){
             QuizFrame1.closeFrame();
             MenuFrame.CreateAndShowMenuFrame();
         }
+        //From Quiz2 frame move back to menu frame
         else if(e.getActionCommand() == "Quiz2BackToMenuFrame"){
             QuizFrame2.closeFrame();
             MenuFrame.CreateAndShowMenuFrame();

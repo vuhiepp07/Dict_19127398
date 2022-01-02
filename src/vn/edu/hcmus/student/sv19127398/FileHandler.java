@@ -12,6 +12,11 @@ import java.util.Iterator;
  * Description: ...
  */
 public class FileHandler {
+    /**
+     * Write down data of searching history to file
+     * @param SearchHistory ArrayList<String>
+     * @param filename String
+     */
     public static void WriteDown_SearchHisFile(ArrayList<String> SearchHistory, String filename){
         FileWriter fw;
         try
@@ -29,6 +34,10 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Read searching history data from file and update it to Searching_History ArrayList of the dictionary
+     * @param filename String
+     */
     public static void Read_SearchHisFile(String filename){
         ArrayList<String> result = new ArrayList<String>();
         BufferedReader br = null;
@@ -85,6 +94,11 @@ public class FileHandler {
         }
     }
 
+    /**
+     * Read Slang words and definitions data from file and add to Dictionary data
+     * @param filename
+     * @return int
+     */
     public static int ReadDataFromFile(String filename){
         BufferedReader br = null;
         try{
@@ -97,7 +111,7 @@ public class FileHandler {
                 String[] temp_arr ={};
                 String Slang = splitData[0];
                 //meanings2.add(Slang);
-                if(splitData.length != 1){ // Tránh trường hợp chỉ có từ mà không có nghĩa
+                if(splitData.length != 1){ // Avoid a Slang without any definition
                     temp_arr = splitData[1].split("\\|"); //https://stackoverflow.com/questions/8996842/errors-with-string-split
                     for(int i = 0; i < temp_arr.length; i++){
                         meanings.add(temp_arr[i]);
@@ -120,7 +134,7 @@ public class FileHandler {
                 crunchifyException.printStackTrace();
             }
         }
-        Read_SearchHisFile("searchHistory.txt");
+        Read_SearchHisFile("searchHistory.txt"); // Read the searching history data file too
         return 1;
     }
 }

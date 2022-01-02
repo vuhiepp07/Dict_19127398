@@ -20,8 +20,17 @@ public class FindingResultFrame extends JFrame{
     int FindType;
     static JFrame ThisFrame;
 
+    /**
+     * Default constructor
+     */
     public FindingResultFrame(){}
 
+    /**
+     * Constructor of the frame with parameters
+     * @param key String
+     * @param type int
+     * if type is 1 -> key is a Slang word, if type is 2 -> key is a Definition
+     */
     public FindingResultFrame(String key, int type){
         SearchKey = key;
         FindType = type;
@@ -30,12 +39,12 @@ public class FindingResultFrame extends JFrame{
         EventHandler eventListener = new EventHandler();
         Ok_btn.addActionListener(eventListener);
 
-        if(FindType == 1){ // Nếu là tìm kiếm Definition bằng Slang word
+        if(FindType == 1){ // if user enter a Slang word to find its definitions
             Result = Dictionary.findByWord(SearchKey);
             FrameLabel = new JLabel("Slang word: " + key);
             Result.add(0, "Definition: ");
         }
-        else if(FindType == 2){ // Nếu là tìm kiếm Slang word bằng Definition
+        else if(FindType == 2){ // if user enter a definition to find its Slang word
             Result = Dictionary.findByDefinition(SearchKey);
             FrameLabel = new JLabel("Definition: " + key);
             Result.add(0, "Slang word: ");
@@ -49,6 +58,10 @@ public class FindingResultFrame extends JFrame{
         addComponentsToFrame(getContentPane());
     }
 
+    /**
+     * Add button, label to Panel, then add Panel to frame
+     * @param container Container
+     */
     public void addComponentsToFrame(Container container){
         container.setLayout(new BorderLayout());
 
@@ -66,6 +79,12 @@ public class FindingResultFrame extends JFrame{
         container.add(footerPanel, BorderLayout.PAGE_END);
     }
 
+    /**
+     * Create and set visible to the Finding result frame
+     * @param SearchKey String
+     * @param findType int
+     * if findType is 1 then SearchKey is a Slang word, if findType is 2 then SearchKey is a Definition
+     */
     public static void CreateAndShowFindingResultFrame(String SearchKey, int findType){
         JFrame.setDefaultLookAndFeelDecorated(true);
         ThisFrame = new FindingResultFrame(SearchKey, findType);
@@ -74,6 +93,9 @@ public class FindingResultFrame extends JFrame{
         ThisFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Exit the frame
+     */
     public static void closeFrame(){
         ThisFrame.dispose();
     }

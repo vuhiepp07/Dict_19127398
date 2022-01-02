@@ -15,6 +15,9 @@ public class MenuFrame extends JFrame{
             EditSlang_btn, DeleteSlang_btn, ResetDict_btn, RandomSlang_btn, Quiz_btn, About_btn, Exit_btn;
     static JFrame ThisFrame;
 
+    /**
+     * Initialize Menu frame, initialize label, button, set action command and add action listener
+     */
     public MenuFrame(){
         StudentInfo = new JLabel("19127398");
         MenuLabel = new JLabel("DICTIONARY");
@@ -57,6 +60,10 @@ public class MenuFrame extends JFrame{
         addComponentsToFrame(getContentPane());
     }
 
+    /**
+     * Add panels to the menu frame
+     * @param container Container
+     */
     public void addComponentsToFrame(Container container){
         container.setLayout(new BorderLayout());
 
@@ -88,10 +95,18 @@ public class MenuFrame extends JFrame{
         container.add(footerPanel, BorderLayout.PAGE_END);
     }
 
+    /**
+     * Add a button to menu panel
+     * @param menuOptions JPanel
+     * @param btn JButton
+     */
     public void addComponentsToMenuPanel(JPanel menuOptions, JButton btn){
         menuOptions.add(btn);
     }
 
+    /**
+     * Create and set visible to the menu frame
+     */
     public static void CreateAndShowMenuFrame(){
         JFrame.setDefaultLookAndFeelDecorated(true);
         ThisFrame = new MenuFrame();
@@ -100,6 +115,9 @@ public class MenuFrame extends JFrame{
         ThisFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Exit menu frame
+     */
     public static void closeFrame(){
         ThisFrame.dispose();
     }

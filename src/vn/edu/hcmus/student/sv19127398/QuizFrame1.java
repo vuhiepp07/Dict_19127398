@@ -14,6 +14,9 @@ public class QuizFrame1 extends JFrame {
     JButton QuizBySlang_btn, QuizByDef_btn, Cancel_btn;
     static JFrame ThisFrame;
 
+    /**
+     * Default constructor, initialize buttons and labels of the frame, set action command and add action listener
+     */
     public QuizFrame1(){
         FrameLabel = new JLabel("CHOOSE ONE TYPE OF QUIZ");
         QuizBySlang_btn = new JButton("Quiz by Slang");
@@ -31,6 +34,10 @@ public class QuizFrame1 extends JFrame {
         addComponentsToFrame(getContentPane());
     }
 
+    /**
+     * Add Buttons and Labels to Panels, then add Panels to frame
+     * @param container
+     */
     public void addComponentsToFrame(Container container){
         container.setLayout(new BorderLayout());
 
@@ -53,6 +60,9 @@ public class QuizFrame1 extends JFrame {
         container.add(footerPanel, BorderLayout.PAGE_END);
     }
 
+    /**
+     * Create and set visible to the Quiz frame
+     */
     public static void CreateAndShowQuizFrame1(){
         JFrame.setDefaultLookAndFeelDecorated(true);
         ThisFrame = new QuizFrame1();
@@ -61,6 +71,9 @@ public class QuizFrame1 extends JFrame {
         ThisFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Exit and close the frame
+     */
     public static void closeFrame(){
         ThisFrame.dispose();
     }

@@ -19,15 +19,26 @@ public class QuizFrame2 extends JFrame{
     static  JFrame ThisFrame;
     static int trueAns;
 
+    /**
+     * Default constructor
+     */
     public QuizFrame2(){
     }
 
+    /**
+     * Constructor with parameters, Initialize Buttons, Answers List and Labels, set action command and add actions listeners to buttons
+     * @param Slang String
+     * @param Def String
+     * @param WrongAns List<String>
+     * @param type int
+     * if type equals 1 -> Quiz by Slang mode (Choose the right definition for a Slang word), if type equals 2 -> Quiz by Definition mode (Choose the right Slang word that fit the Definition)
+     */
     public QuizFrame2(String Slang, String Def, List<String> WrongAns, int type){
         Answers = new ArrayList<JButton>();
         Cancel_btn = new JButton("Cancel");
         Random generator = new Random();
         trueAns = generator.nextInt(4);
-        if(type == 1) //Nếu người dùng đang chơi quiz by slang
+        if(type == 1) //If the user is playing quiz by Slang
         {
             FrameLabel = new JLabel("Slang: " + Slang);
             for(int i = 0, h = 0; i < 3; i++){
@@ -42,7 +53,7 @@ public class QuizFrame2 extends JFrame{
                 Answers.add(Ans);
             }
         }
-        else if(type == 2) //Nếu người dùng đang chơi quiz by def
+        else if(type == 2) //If the user is playing quiz by definition
         {
             FrameLabel = new JLabel("Definition: " + Def);
             for(int i = 0, h = 0; i < 4; i++){
@@ -72,6 +83,10 @@ public class QuizFrame2 extends JFrame{
         addComponentsToFrame(getContentPane());
     }
 
+    /**
+     * Add buttons and labels to panel and then add panels to frame
+     * @param container
+     */
     public void addComponentsToFrame(Container container){
         container.setLayout(new BorderLayout());
 
@@ -89,11 +104,22 @@ public class QuizFrame2 extends JFrame{
         container.add(AnsPanel, BorderLayout.CENTER);
     }
 
+    /**
+     * get the position of the true answer of the quiz game (0->3)
+     * @return String
+     */
     public static String getTrueAnswer(){
         return String.valueOf(trueAns);
     }
 
-    public static void CreateAndShowMenuFrame(String Slang, String Def, List<String> WrongAns, int type){
+    /**
+     * Create and set visible to the Quiz frame
+     * @param Slang String
+     * @param Def String
+     * @param WrongAns List<String>
+     * @param type int
+     */
+    public static void CreateAndShowQuizFrame2(String Slang, String Def, List<String> WrongAns, int type){
         JFrame.setDefaultLookAndFeelDecorated(true);
         ThisFrame = new QuizFrame2(Slang, Def, WrongAns, type);
         ThisFrame.pack();
@@ -101,6 +127,9 @@ public class QuizFrame2 extends JFrame{
         ThisFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * Exit and close the frame
+     */
     public static void closeFrame(){
         ThisFrame.dispose();
     }

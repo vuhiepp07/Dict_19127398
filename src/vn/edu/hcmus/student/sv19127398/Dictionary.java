@@ -158,6 +158,7 @@ public class Dictionary {
                 temp = temp.substring(1, temp.length());
                 if(Val.get(i).equals(Value) || temp.equals(Value)) {
                     Result.add(Key);
+                    break;
                 }
             }
         }

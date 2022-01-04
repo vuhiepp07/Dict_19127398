@@ -38,6 +38,7 @@ public class FindingResultFrame extends JFrame{
         Ok_btn.setActionCommand("ResultBackToMenuFrame");
         EventHandler eventListener = new EventHandler();
         Ok_btn.addActionListener(eventListener);
+        Result = new ArrayList<String>();
 
         if(FindType == 1){ // if user enter a Slang word to find its definitions
             Result = Dictionary.findByWord(SearchKey);

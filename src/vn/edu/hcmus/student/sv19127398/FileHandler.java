@@ -114,6 +114,9 @@ public class FileHandler {
                 if(splitData.length != 1){ // Avoid a Slang without any definition
                     temp_arr = splitData[1].split("\\|"); //https://stackoverflow.com/questions/8996842/errors-with-string-split
                     for(int i = 0; i < temp_arr.length; i++){
+                        if((temp_arr[i].charAt(temp_arr[i].length() - 1) == ' ')){
+                            temp_arr[i] = temp_arr[i].substring(0, temp_arr[i].length() - 1);
+                        }
                         meanings.add(temp_arr[i]);
                     }
                     Dictionary.add(Slang, meanings);

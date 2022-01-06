@@ -85,6 +85,7 @@ public class FileHandler {
                     fw.write(Val.get(i));
                     fw.write("|");
                 }
+                fw.write('\n');
             }
             fw.flush();
             fw.close();
@@ -106,11 +107,9 @@ public class FileHandler {
             br = new BufferedReader(new FileReader(filename));
             while((DataLine = br.readLine()) != null){
                 ArrayList<String> meanings = new ArrayList<String>();
-                //ArrayList<String> meanings2 = new ArrayList<String>(); // Array lưu meaning dùng cho reverse dictionary
                 String[] splitData = DataLine.split("`");
                 String[] temp_arr ={};
                 String Slang = splitData[0];
-                //meanings2.add(Slang);
                 if(splitData.length != 1){ // Avoid a Slang without any definition
                     temp_arr = splitData[1].split("\\|"); //https://stackoverflow.com/questions/8996842/errors-with-string-split
                     for(int i = 0; i < temp_arr.length; i++){
@@ -120,9 +119,6 @@ public class FileHandler {
                         meanings.add(temp_arr[i]);
                     }
                     Dictionary.add(Slang, meanings);
-                    /*for(int i = 0; i < meanings.size(); i++){
-                        ReverseDictionary.add(meanings.get(i), meanings2);
-                    }*/
                 }
             }
         }

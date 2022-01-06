@@ -228,7 +228,7 @@ public class EventHandler implements ActionListener {
                         "Incorrect", JOptionPane.INFORMATION_MESSAGE);
             }
             QuizFrame2.closeFrame();
-            MenuFrame.CreateAndShowMenuFrame();
+            QuizFrame1.CreateAndShowQuizFrame1();
         }
         //When user click on answer 1 in quiz game
         else if(e.getActionCommand().equals("1")){
@@ -241,7 +241,7 @@ public class EventHandler implements ActionListener {
                         "Incorrect", JOptionPane.INFORMATION_MESSAGE);
             }
             QuizFrame2.closeFrame();
-            MenuFrame.CreateAndShowMenuFrame();
+            QuizFrame1.CreateAndShowQuizFrame1();
         }
         //When user click on answer 2 in quiz game
         else if(e.getActionCommand().equals("2")){
@@ -254,7 +254,7 @@ public class EventHandler implements ActionListener {
                         "Incorrect", JOptionPane.INFORMATION_MESSAGE);
             }
             QuizFrame2.closeFrame();
-            MenuFrame.CreateAndShowMenuFrame();
+            QuizFrame1.CreateAndShowQuizFrame1();
         }
         //When user click on answer 3 in quiz game
         else if(e.getActionCommand().equals("3")){
@@ -267,10 +267,16 @@ public class EventHandler implements ActionListener {
                         "Incorrect", JOptionPane.INFORMATION_MESSAGE);
             }
             QuizFrame2.closeFrame();
-            MenuFrame.CreateAndShowMenuFrame();
+            QuizFrame1.CreateAndShowQuizFrame1();
         }
         //Show the student information
         else if(e.getActionCommand() == "AboutStudent"){
+            AboutFrame.CreateAndShowAboutFrame();
+            MenuFrame.closeFrame();
+        }
+        else if(e.getActionCommand() == "AboutBackToMenuFrame"){
+            AboutFrame.closeFrame();
+            MenuFrame.CreateAndShowMenuFrame();
         }
         //Exit the program
         else if(e.getActionCommand() == "ExitMenuFrame"){

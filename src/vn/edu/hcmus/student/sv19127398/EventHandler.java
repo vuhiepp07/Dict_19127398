@@ -160,7 +160,7 @@ public class EventHandler implements ActionListener {
         }
         //Reset the dictionary
         else if(e.getActionCommand() == "ResetDictionary"){
-            FileHandler.ReadDataFromFile("slang.txt");
+            Dictionary.Reset();
             JOptionPane.showMessageDialog(null, "Dictionary has been reseted to default, " +
                     "all edited and deleted slang words have been recovered and Slang words which had been add by user have been deleted",
                     "Reset Dictionary", JOptionPane.INFORMATION_MESSAGE);

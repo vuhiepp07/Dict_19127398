@@ -69,7 +69,7 @@ public class FileHandler {
     hệ thống mới đọc file từ điển gốc và lưu vào Cấu trúc dữ liệu Dictionary */
     public static void WriteDictDataTo_EditedEdition_File(String filename){
         HashMap<String, ArrayList<String>> dict = new HashMap<String, ArrayList<String>>();
-        dict.putAll(Dictionary.getDictionaryData());
+        dict = Dictionary.getDictionaryData();
         FileWriter fw;
         try
         {
@@ -83,7 +83,7 @@ public class FileHandler {
                 fw.write("`");
                 for(int i = 0; i < Val.size(); i++) {
                     fw.write(Val.get(i));
-                    fw.write("|");
+                    fw.write('|');
                 }
                 fw.write('\n');
             }
@@ -94,6 +94,7 @@ public class FileHandler {
             System.out.println("Error opening file");
         }
     }
+
 
     /**
      * Read Slang words and definitions data from file and add to Dictionary data

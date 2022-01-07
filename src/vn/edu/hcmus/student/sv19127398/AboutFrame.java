@@ -2,7 +2,6 @@ package vn.edu.hcmus.student.sv19127398;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.zip.GZIPInputStream;
 
 /**
  * vn.edu.hcmus.student.sv19127398

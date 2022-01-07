@@ -18,6 +18,9 @@ public class EventHandler implements ActionListener {
      * Handle the events of the whole program
      * @param e ActionEvent
      */
+    //https://stackoverflow.com/questions/8796871/custom-title-on-joptionpane-message-dialogs
+    //https://stackoverflow.com/questions/8689122/joptionpane-yes-no-options-confirm-dialog-box-issue
+    //https://stackoverflow.com/questions/14407804/how-to-change-the-default-text-of-buttons-in-joptionpane-showinputdialog
     @Override
     public void actionPerformed(ActionEvent e) {
         //If the user click on Search by word or search by definition buttons on the menu frame

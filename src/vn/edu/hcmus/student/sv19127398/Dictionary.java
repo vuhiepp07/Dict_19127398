@@ -9,6 +9,8 @@ import java.util.*;
  * Description: ...
  */
 public class Dictionary {
+    //https://freetuts.net/map-interface-trong-java-1087.html
+    //https://freetuts.net/tong-quan-ve-collections-trong-java-1070.html
     static HashMap<String, ArrayList<String>> Dict = new HashMap<>();
     static ArrayList<String> Searching_History = new ArrayList<>();
 

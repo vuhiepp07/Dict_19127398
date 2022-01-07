@@ -199,7 +199,7 @@ public class EventHandler implements ActionListener {
                 for(int i = 2; i <quiz.size(); i++){
                     WrongAnswer.add(quiz.get(i));
                 }
-                QuizFrame2.CreateAndShowQuizFrame2(Slang, Def, WrongAnswer, 2);
+                QuizFrame2.CreateAndShowQuizFrame2(Slang, Def, WrongAnswer, 1);
                 QuizFrame1.closeFrame();
             }
         }

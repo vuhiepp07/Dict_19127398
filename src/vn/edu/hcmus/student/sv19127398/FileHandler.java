@@ -83,6 +83,7 @@ public class FileHandler {
                 fw.write("`");
                 for(int i = 0; i < Val.size(); i++) {
                     fw.write(Val.get(i));
+                    if(i == Val.size() -1 ) break;
                     fw.write('|');
                 }
                 fw.write('\n');
@@ -117,7 +118,11 @@ public class FileHandler {
                         if((temp_arr[i].charAt(temp_arr[i].length() - 1) == ' ')){
                             temp_arr[i] = temp_arr[i].substring(0, temp_arr[i].length() - 1);
                         }
-                        meanings.add(temp_arr[i]);
+                        if(temp_arr[i] == " ")
+                        {
+                            continue;
+                        }
+                        else meanings.add(temp_arr[i]);
                     }
                     Dictionary.add(Slang, meanings);
                 }

@@ -41,7 +41,7 @@ public class QuizFrame2 extends JFrame{
         if(type == 1) //If the user is playing quiz by Slang
         {
             FrameLabel = new JLabel("Slang: " + Slang);
-            for(int i = 0, h = 0; i < 3; i++){
+            for(int i = 0, h = 0; i < 4; i++){
                 JButton Ans;
                 if(i == trueAns){
                     Ans = new JButton(Def);
